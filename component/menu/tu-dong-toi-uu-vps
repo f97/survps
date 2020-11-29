@@ -1,0 +1,29 @@
+#!/bin/bash
+
+. /etc/survps/scripts.conf
+
+printf "Bat dau toi uu VPS...\n\n"
+printf "Cai dat PHP Zend OPcache cho CentOS...\n\n"
+
+yum install epel-release -y
+rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
+
+printf "Dang toi uu PHP Zend OPcache...\n\n"
+
+yum --enablerepo=remi,remi-php7.4 install php-opcache
+service php-fpm restart
+
+printf "Cai dat Redis cho CentOS...\n\n"
+
+yum install epel-release -y
+rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
+
+yum --enablerepo=remi,remi-php74 install redis php-pecl-redis
+service php-fpm restart
+
+printf "Bau dau toi uu Redis...\n\n"
+
+chkconfig redis on
+service redis start
+
+exit

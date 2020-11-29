@@ -1,0 +1,29 @@
+#!/bin/sh
+
+. /etc/survps/scripts.conf
+
+printf "=========================================================================\n"
+printf "                             Them Swap\n"
+printf "=========================================================================\n"
+echo -n "Nhap vao so swap ban muon them (Mb) roi an [ENTER]: "
+read size
+if [ "$size" = "" ]; then
+    echo "Ban nhap sai $sizeK, vui long nhap chinh xac"
+    exit
+fi
+if [ -f /swapfile ]; then
+    echo "Phat hien thay swap da ton tai tren he thong"
+    echo "Chao tam biet...!"
+    exit
+fi
+
+printf "Dang tao swap..."
+
+sudo dd if=/dev/zero of=/swapfile bs=1024 count=$(($size*1024))
+mkswap /swapfile
+swapon /swapfile
+echo /swapfile none swap defaults 0 0 >> /etc/fstab
+chown root:root /swapfile 
+chmod 0600 /swapfile
+
+echo "$size Mb swap da duoc them thanh cong vao server"

@@ -1,0 +1,66 @@
+#!/bin/sh
+
+. /etc/survps/scripts.conf
+
+clear
+prompt="Nhap vao lua chon menu cua ban:"
+options=(
+    "Liet Ke Domain" #1
+    "Them Domain" #2
+    "Xoa Domain" #3
+    "Sao Luu Code" #4
+    "Sao Luu Data" #5
+    "Tu Dong Sao Luu" #6
+    "Tat Tu Dong Sao Luu" #7
+    "Tao Database" #8
+    "Xoa Database" #9
+    "Doi Pass VPS" #10
+    "Doi Port Admin" #11
+    "Them Park Domain" #12
+    "Them Redirect Domain" #13
+    "Phan Quyen Webserver" #14
+    "Nang Cap Server" #15
+    "Tao Swap" #16
+    "Tu Dong Toi Uu VPS" #17
+) # End Options
+
+printf "=========================================================================\n"
+printf "               SurVPS Script v$survps_version - http://survps.com/script/ \n"
+printf "=========================================================================\n"
+printf "                             SurVPS Menu\n"
+printf "=========================================================================\n"
+
+select opt in "${options[@]}" "Thoat"; do
+
+    case "$REPLY" in
+    1) /etc/survps/menu/liet-ke-domain ;;
+    2) /etc/survps/menu/them-domain ;;
+    3) /etc/survps/menu/xoa-domain ;;
+    4) /etc/survps/menu/sao-luu-code ;;
+    5) /etc/survps/menu/sao-luu-data ;;
+    6) /etc/survps/menu/tu-dong-sao-luu ;;
+    7) /etc/survps/menu/tat-tu-dong-sao-luu ;;
+    8) /etc/survps/menu/tao-database ;;
+    9) /etc/survps/menu/xoa-database ;;
+    10) /etc/survps/menu/doi-pass-vps ;;
+    11) /etc/survps/menu/doi-port-admin ;;
+    12) /etc/survps/menu/park-domain ;;
+    13) /etc/survps/menu/forward-domain ;;
+    14) /etc/survps/menu/phan-quyen-webserver ;;
+    15) /etc/survps/menu/nang-cap-server ;;
+    16) /etc/survps/menu/tao-swap ;;
+    17) /etc/survps/menu/tu-dong-toi-uu-vps ;;
+        # End Menu
+
+    $((${#options[@]} + 1)))
+        printf "\nChao tam biet!\nHen gap lai ban o http://survps.com/\n\n"
+        break
+        ;;
+    *)
+        echo "Ban nhap sai, vui long nhap theo so thu tu tren danh sach"
+        continue
+        ;;
+
+    esac
+
+done

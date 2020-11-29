@@ -18,7 +18,7 @@ printf "Cai dat Redis cho CentOS...\n\n"
 yum install epel-release -y
 rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
 
-yum --enablerepo=remi,remi-php74 install redis php-pecl-redis
+yum --enablerepo=remi,remi-php74 install redis php-pecl-redis -y
 service php-fpm restart
 
 printf "Bau dau toi uu Redis...\n\n"

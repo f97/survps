@@ -841,6 +841,7 @@ Neu can ho tro, cac ban hay truy cap https://survps.com/script/
 END
 
 chmod 600 /root/survps-script.txt
+echo "nameserver 8.8.8.8" >>  /etc/resolv.conf
 
 if [ "$1" = "wordpress" ]; then
     print_message "Hoan tat qua trinh cai dat SurVPS Script + WordPress!"

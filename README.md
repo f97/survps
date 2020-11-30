@@ -2,14 +2,8 @@
 
 ### Install
 
-clone project
-
-`git clone https://github.com/f97/survps.git`
-
-cd project
-
-`cd survps`
-
-install script
-
-`bash install`
+```bash
+git clone https://github.com/f97/survps.git`
+cd survps
+bash install
+```

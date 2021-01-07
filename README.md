@@ -1,4 +1,4 @@
-## Giới thiệu SurVPS
+## SurVPS
 
 ### Install
 
